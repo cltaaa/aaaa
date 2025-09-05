@@ -30,7 +30,8 @@ const ResultView: React.FC<ResultViewProps> = ({ capturedImage, settings, onBack
         const result = await generateImageWithReference(capturedImage, settings.referenceImage, settings.prompt);
         setGeneratedImage(result);
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'An unknown error occurred.');
+        console.error("ResultView error:", err);
+        setError(err instanceof Error ? err.message : '发生未知错误');
       } finally {
         setIsLoading(false);
       }
